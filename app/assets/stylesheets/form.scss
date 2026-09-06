@@ -1,0 +1,19 @@
+input {
+    width: 100%;
+    margin: 8px 0px;
+    padding: 16px 24px;
+    bottom: 1px solid #EBEBEB;
+}
+
+label {
+    font-size: 12px;
+}
+
+textarea {
+    width: 100%;
+    margin: 8px 0px;
+    padding: 8px 8px;
+    min-height: 440px;
+    resize: vertical;
+    bottom: 1px solid #EBEBEB;
+}

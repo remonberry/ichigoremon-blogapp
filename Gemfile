@@ -27,6 +27,8 @@ gem "jbuilder"
 gem "faker"
 gem "hamlit"
 gem "annotate"
+gem "better_errors"
+gem "binding_of_caller"
 gem "sassc-rails"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -28,14 +28,17 @@
         <% end %>
           <p class = "header_pageTiitle">BlogApp</p>
         </div>
-      <p class="header_pageTitle">新着記事</p>
-      <div class="dropdown">
-        <%= image_tag 'default-avatar.png', class: 'header_avatar dropbtn' %>
-        <div class="dropdown-content">
-          <a href="#">プロフィール</a>
-          <a href="#">ログアウト</a>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <%= image_tag 'default-avatar.png', class: 'header_avatar dropbtn' %>
+          <div class="dropdown-content">
+            <a href="#">プロフィール</a>
+            <%= link_to "ログアウト", destroy_user_session_path, data: { method: "delete" }%>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path, class: "header_loginBtn" %>
+      <% end %>
     </header>
     <% if flash.present? %>
       <div class="flash">

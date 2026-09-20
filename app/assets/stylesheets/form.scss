@@ -1,12 +1,28 @@
-input {
+input:not([type="checkbox"]) {
     width: 100%;
     margin: 8px 0px;
     padding: 16px 24px;
-    bottom: 1px solid #EBEBEB;
+    border: 1px solid #EBEBEB;
 }
 
 label {
     font-size: 12px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.remember-me input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.remember-me label {
+  margin: 0;
 }
 
 textarea {
@@ -15,5 +31,5 @@ textarea {
     padding: 8px 8px;
     min-height: 440px;
     resize: vertical;
-    bottom: 1px solid #EBEBEB;
+    border: 1px solid #EBEBEB;
 }

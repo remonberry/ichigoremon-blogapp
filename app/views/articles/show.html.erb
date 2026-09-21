@@ -3,10 +3,8 @@
     <div class="article_detail">
         <%= image_tag 'default-avatar.png' %>
         <div>
-        <% if @article.user.present? %>
-            <p><%= @article.user.display_name %></p>
+            <p><%= @article.author_name %></p>
             <p><%= @article.display_created_at %></p>
-        <% end %>
         </div>
         <% if user_signed_in? && current_user.has_written?(@article) %>
             <div class="article_detail_actions">

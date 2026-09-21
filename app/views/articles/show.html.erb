@@ -6,7 +6,7 @@
             <p>ichigoremon</p>
             <p><%= @article.display_created_at %></p>
         </div>
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.has_written?(@article) %>
             <div class="article_detail_actions">
                 <div class="dropdown">
                     <%= image_tag 'actions.svg', class: 'dropbtn' %>

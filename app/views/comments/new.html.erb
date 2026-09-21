@@ -1,9 +1,11 @@
 <div class="container">
-    <ul>
-        <% @comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
+    <% if @comment.errors.any? %>
+        <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    <% end %>
 
     <%= form_with(model: @comment, url: article_comments_path(@comment.article), local: true) do |f| %>
         <div>

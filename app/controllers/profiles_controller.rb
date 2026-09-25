@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
             :nickname,
             :introduction,
             :gender,
-            :birthda,
+            :birthday,
             :subscribed
         )
     end

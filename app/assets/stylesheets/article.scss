@@ -51,9 +51,21 @@ $avatar-size: 32px;
     right: 16px;
     bottom: 16px;
 
+    form {
+      display: inline;
+    }
+
+    button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      cursor: pointer;
+    }
+
     img {
       width: $heart-size;
       height: $heart-size;
+      display: block;
     }
   }
 }

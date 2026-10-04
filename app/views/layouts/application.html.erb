@@ -22,17 +22,20 @@
         <header class="header">
         <div class = "header_logos">
         <% if !current_page?(root_path)%>
-          <%= link_to :back do %>
+          <%= link_to request.referer || root_path do %>
             <%= image_tag 'back.svg', class: 'header_back' %>
           <% end %>
         <% end %>
-          <p class = "header_pageTiitle">BlogApp</p>
+          <p class = "header_pageTiitle">
+            <%= link_to "Blogapp", root_path %>
+          </p>
         </div>
       <% if user_signed_in? %>
         <div class="dropdown">
           <%= image_tag current_user.avatar_image, class: 'header_avatar dropbtn' %>
           <div class="dropdown-content">
             <%= link_to "プロフィール", profile_path %>
+            <%= link_to "お気に入り", favorites_path %>
             <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "delete" }%>
           </div>
         </div>

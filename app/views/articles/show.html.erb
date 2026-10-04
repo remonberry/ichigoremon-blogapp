@@ -1,4 +1,9 @@
 <div class="article">
+    <% if @article.eyecatch.attached?%>
+        <div class="article_image">
+            <%= image_tag @article.eyecatch%>
+        </div>
+    <% end %>
     <h1 class="article_title"><%= @article.title %></h1>
     <div class="article_detail">
         <%= image_tag @article.user.avatar_image %>

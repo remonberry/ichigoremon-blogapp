@@ -1,23 +1,26 @@
       <%= link_to article_path(article) do %>
         <div class="card">
-          <div class="card_image">
-            <%= image_tag 'eyecatch1.png' %>
-          </div>
-          <div class="card_content">
-            <div class="card_title">
-              <%= article.title %>
+          <% if article.eyecatch.attached? %>
+            <div class="card_image">
+              <%= image_tag article.eyecatch %>
             </div>
-            <div class="card_heart">
-              <%= image_tag 'heart.svg' %>
-              <span><%= article.like_count %></span>
-            </div>
-            <div class="card_detail">
-              <%= image_tag article.user.avatar_image %>
-              <div>
-                <p><%= article.author_name %></p>
-                <p><%= article.display_created_at %></p>
+          <% end %>
+          
+            <div class="card_content">
+              <div class="card_title">
+                <%= article.title %>
+              </div>
+              <div class="card_heart">
+                <%= image_tag 'heart.svg' %>
+                <span><%= article.like_count %></span>
+              </div>
+              <div class="card_detail">
+                <%= image_tag article.user.avatar_image %>
+                <div>
+                  <p><%= article.author_name %></p>
+                  <p><%= article.display_created_at %></p>
+                </div>
               </div>
             </div>
-          </div>
         </div>
       <% end %>

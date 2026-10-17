@@ -25,7 +25,9 @@
         <% end %>
     </div>
     <div class="article_content">
-        <%= @article.content %>
+        <div class="trix-content">
+            <%= raw @article.content.to_s %>
+        </div>
         <% if user_signed_in? %>
             <% if current_user.has_liked?(@article) %>
                 <div class="article_heart">

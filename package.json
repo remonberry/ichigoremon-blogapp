@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^5.4.4"
+    "@rails/actiontext": "^8.1.400",
+    "@rails/webpacker": "^5.4.4",
+    "trix": "^2.1.19"
   }
 }

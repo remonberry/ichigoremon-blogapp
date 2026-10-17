@@ -1,8 +1,8 @@
 <div class="container">
-  <%= render 'tabs' %>
+  <%= render partial: 'tabs' %>
 
     <% @articles.each do |article| %>
-      <%= render 'commons/article', article: article %>
+      <%= render partial: 'commons/article', locals: { article: article } %>
     <% end %>
 
     <%= link_to new_article_path do%>

@@ -5,4 +5,9 @@ class AccountsController < ApplicationController
             redirect_to profile_path
         end
     end
+
+    def follows
+        @user = User.find(params[:id])
+        @followers = @user.followers
+    end
 end

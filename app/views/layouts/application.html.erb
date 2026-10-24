@@ -4,6 +4,7 @@
     <title><%= content_for(:title) || "Ichigoremon Blogapp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,7 +19,7 @@
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body data-controller="dom-loaded">
         <header class="header">
         <div class = "header_logos">
         <% if !current_page?(root_path)%>

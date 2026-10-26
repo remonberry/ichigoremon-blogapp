@@ -7,6 +7,14 @@ export default class extends Controller {
 
     this.element.addEventListener("click", () => {
       window.alert("CLICKED")
+
+      axios.get("/articles.json")
+        .then(response => {
+          console.log(response.data)
+        })
+        .catch(error => {
+          console.error(error)
+        })
     })
   }
 }

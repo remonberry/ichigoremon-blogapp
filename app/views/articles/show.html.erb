@@ -4,7 +4,7 @@
             <%= image_tag @article.eyecatch%>
         </div>
     <% end %>
-    <h1 class="article_title" data-controller="article-title"><%= @article.title %></h1>
+    <h1 class="article_title" data-controller="article-title" data-action="click->article-title#click"><%= @article.title %></h1>
     <div class="article_detail">
         <%= link_to account_path(@article.user) do %>
             <%= image_tag @article.user.avatar_image %>

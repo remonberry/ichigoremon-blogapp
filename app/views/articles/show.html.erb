@@ -51,11 +51,11 @@
 <div class="article">
     <h2>コメント一覧</h2>
 
-    <% @comments.each do |comment| %>
-        <div class="article_comment">
-            <p><%= comment.content %></p>
-        </div>
-    <% end %>
+    <div
+        class="comments-container"
+        data-controller="comments"
+        data-comments-article-id-value="<%= @article.id %>">
+    </div>
 </div>
 
 <div class="container">

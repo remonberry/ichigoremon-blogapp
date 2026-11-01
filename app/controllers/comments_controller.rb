@@ -16,10 +16,10 @@ class CommentsController < ApplicationController
         @comment = article.comments.build(comment_params)
 
         if @comment.save
-            redirect_to article_path(article), notice: 'コメントを追加'
+            render json: { id: @comment.id, content: @comment.content }, status: :created
         else
-            flash.now[:error] = '更新できませんでした'
-            render :new, status: :unprocessable_entity
+            render json: { errors: @comment.errors.full_messages },
+                   status: :unprocessable_entity
         end
     end
 

@@ -58,10 +58,20 @@
     </div>
 </div>
 
-<div class="container">
-    <%= link_to new_article_comment_path(@article) , data: { turbo: false } do %>
-        <div class="btn-secondary">
-            コメントを追加
+<div class="container" data-controller="comment-form">
+    <button
+        type="button"
+        class="btn-secondary"
+        data-comment-form-target="button"
+        data-action="click->comment-form#show">
+        コメントを追加
+        </button>
+
+        <div class="comment-text-area hidden" data-comment-form-target="form">
+            <%= form_with model: [@article, Comment.new],
+                          data: { action: "submit->comment-form#submit" } do |form| %>
+                <%= form.text_area :content, class: "sm" %>
+                <%= form.submit "コメントを追加", class: "btn-secondary" %>
+            <% end %>
         </div>
-    <% end %>
 </div>

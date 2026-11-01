@@ -4,15 +4,19 @@
             <%= image_tag @article.eyecatch%>
         </div>
     <% end %>
-    <h1 class="article_title" data-controller="article-title" data-action="click->article-title#click"><%= @article.title %></h1>
+
+    <h1 class="article_title"><%= @article.title %></h1>
+    
     <div class="article_detail">
         <%= link_to account_path(@article.user) do %>
             <%= image_tag @article.user.avatar_image %>
         <% end %>
+
         <div>
             <p><%= @article.author_name %></p>
             <p><%= @article.display_created_at %></p>
         </div>
+
         <% if user_signed_in? && current_user.has_written?(@article) %>
             <div class="article_detail_actions">
                 <div class="dropdown">
@@ -26,26 +30,22 @@
             </div>
         <% end %>
     </div>
+
     <div class="article_content">
         <div class="trix-content">
             <%= raw @article.content.to_s %>
         </div>
-        <% if user_signed_in? %>
-            <% if current_user.has_liked?(@article) %>
-                <div class="article_heart">
-                    <%= button_to article_like_path(@article), method: :delete, form: { data: {turbo: false } } do %>
-                        <%= image_tag 'heart-active.svg' %>
-                    <% end %>
-                </div>
-            <% else %>
-                <div class="article_heart">
-                    <%= button_to article_like_path(@article), method: :post, form: { data: {turbo: false } }  do %>
-                        <%= image_tag 'heart.svg' %>
-                    <% end %>
-                </div>
-            <% end %>
-        <% end %>
-    </div>
+
+<div data-controller="like" data-like-article-id-value="<%= @article.id %>" data-like-has-liked-value="<%= user_signed_in? && current_user.has_liked?(@article) %>">
+    <% if user_signed_in? %>
+            <div class="article_heart hidden active-heart" data-action="click->like#toggle">
+                <%= image_tag 'heart-active.svg' %>
+            </div>
+
+            <div class="article_heart hidden inactive-heart" data-action="click->like#toggle">
+                <%= image_tag 'heart.svg' %>
+            </div>
+    <% end %>
 </div>
 
 <div class="article">
@@ -59,9 +59,9 @@
 </div>
 
 <div class="container">
-    <%= link_to new_article_comment_path(@article) do %>
-    <div class="btn-secondary">
-        コメントを追加
-    </div>
+    <%= link_to new_article_comment_path(@article) , data: { turbo: false } do %>
+        <div class="btn-secondary">
+            コメントを追加
+        </div>
     <% end %>
 </div>

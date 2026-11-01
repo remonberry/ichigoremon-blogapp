@@ -20,37 +20,38 @@
   </head>
 
   <body data-controller="dom-loaded">
-        <header class="header">
-        <div class = "header_logos">
-        <% if !current_page?(root_path)%>
-          <%= link_to request.referer || root_path do %>
-            <%= image_tag 'back.svg', class: 'header_back' %>
+    <%= include_gon %>
+          <header class="header">
+          <div class = "header_logos">
+          <% if !current_page?(root_path)%>
+            <%= link_to request.referer || root_path do %>
+              <%= image_tag 'back.svg', class: 'header_back' %>
+            <% end %>
           <% end %>
-        <% end %>
-          <p class = "header_pageTiitle">
-            <%= link_to "Blogapp", root_path %>
-          </p>
-        </div>
-      <% if user_signed_in? %>
-        <div class="dropdown">
-          <%= image_tag current_user.avatar_image, class: 'header_avatar dropbtn' %>
-          <div class="dropdown-content">
-            <%= link_to "プロフィール", profile_path %>
-            <%= link_to "お気に入り", favorites_path %>
-            <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "delete" }%>
+            <p class = "header_pageTiitle">
+              <%= link_to "Blogapp", root_path %>
+            </p>
           </div>
-        </div>
-      <% else %>
-        <%= link_to "ログイン", new_user_session_path, class: "header_loginBtn" %>
-      <% end %>
-    </header>
-    <% if flash.present? %>
-      <div class="flash">
-        <% flash.each do |key, value| %>
-          <div class="<%= key %>"><%= value %></div>
+        <% if user_signed_in? %>
+          <div class="dropdown">
+            <%= image_tag current_user.avatar_image, class: 'header_avatar dropbtn' %>
+            <div class="dropdown-content">
+              <%= link_to "プロフィール", profile_path %>
+              <%= link_to "お気に入り", favorites_path %>
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: "delete" }%>
+            </div>
+          </div>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "header_loginBtn" %>
         <% end %>
-      </div>
-    <% end %>
-    <%= yield %>
+      </header>
+      <% if flash.present? %>
+        <div class="flash">
+          <% flash.each do |key, value| %>
+            <div class="<%= key %>"><%= value %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <%= yield %>
   </body>
 </html>
